@@ -1,8 +1,11 @@
 inputText = open('input.txt','r')
 myDict = {}
 
+
 for line in inputText:
 	myDict[int(line)] = line[:-1]
+
+
 
 
 for key in myDict:
