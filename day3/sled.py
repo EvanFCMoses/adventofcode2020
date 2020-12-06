@@ -25,20 +25,14 @@ class Hillside:
 
 	def moveATobogan(self, tobogan):
 		if tobogan.coord.x + tobogan.xMove > (len(self.topography[0])-1):
-			print("wrapping unwrapped coord: " + str(tobogan.coord.x + tobogan.xMove) + "," + str(tobogan.coord.y + tobogan.yMove))
 			tobogan.coord.x = ((tobogan.coord.x + tobogan.xMove)-(len(self.topography[0])-1)-1)
 			tobogan.coord.y = tobogan.coord.y + tobogan.yMove
-			print("new tobogan ruls: coords: " + str(tobogan.coord.x) + "," + str(tobogan.coord.y) + "  move: " + str(tobogan.xMove) + "," + str(tobogan.yMove))
 		else:
 			tobogan.coord.x = tobogan.coord.x + tobogan.xMove
 			tobogan.coord.y = tobogan.coord.y + tobogan.yMove
 
 		if self.checkCollision(tobogan.coord.x, tobogan.coord.y):
-			print("collision check for: " + str(tobogan.coord.x + tobogan.xMove) + "  " + str(tobogan.coord.y + tobogan.yMove))
 			tobogan.numberOfCollisions = tobogan.numberOfCollisions+1
-
-		tobogan.coord.x = tobogan.coord.x + tobogan.xMove
-		tobogan.coord.y = tobogan.coord.y + tobogan.yMove
 
 
 	def wouldAMoveMovePastBottom(self, tobogan):
@@ -61,25 +55,17 @@ class Coordinates:
 
 
 
-hill = Hillside(inputText)
-for row in hill.topography:
-	print(row)
+hill = Hillside(inputText)\
+# for row in hill.topography:
+# 	print(row)
 
-redRunner = Tobogan(3,1, 0, 0)
+redRunner = Tobogan(1,2, 0, 0)
 
-
-# print("RR coord: " + str(redRunner.coord.x) + " " + str(redRunner.coord.y))
-# hill.moveATobogan(redRunner)
-# print("RR coord: " + str(redRunner.coord.x) + " " + str(redRunner.coord.y))
 while not hill.wouldAMoveMovePastBottom(redRunner):
-	print("movement")
 	hill.moveATobogan(redRunner)
 
 print(redRunner.numberOfCollisions)
 
-print(len(hill.topography[0])-1)
-print(len(hill.topography)-1)
+# print(len(hill.topography[0]))
+# print(len(hill.topography))
 
-testT = Tobogan(3,1,28, 0)
-hill.moveATobogan(testT)
-print("new position: " + str(testT.coord.x) + "," + str(testT.coord.y))
