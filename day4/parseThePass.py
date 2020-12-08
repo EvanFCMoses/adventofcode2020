@@ -23,6 +23,8 @@ class PassportReader:
 					passport[item.split(":")[0]] = item.split(":")[1]
 		array.append(passport)
 
+		file.close()
+
 		return array
 
 	def validatePassports(self):
