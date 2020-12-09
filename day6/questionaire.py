@@ -55,12 +55,11 @@ questionaire = QuestionaireResults()
 
 addition = 0
 for result in questionaire.listOfGroupResults:
-	print(len(result.answerDict.keys()))
+	
+	for question in result.answerDict:
+		if result.answerDict[question] == result.groupSize:
+			addition = addition + 1
 	print(result.answerDict)
-	print(result.groupSize)
-	addition = addition + len(result.answerDict.keys())
 
 
-for row in questionaire.listOfGroupResults:
-	print(row.answerDict)
 print(addition)
